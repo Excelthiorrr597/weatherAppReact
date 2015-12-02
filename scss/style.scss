@@ -114,7 +114,61 @@ img {
     max-width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    margin-top: 5px;
+}
+
+p+p {
+    text-indent: 0;
+}
 /**
  * General styles
  */
 
+#searchArea {
+    height: 50px;
+    background-color: lightsteelblue;
+    border-bottom: 1px solid black;
+    position: relative;
+    #logo {
+        position: absolute;
+        left: 0;
+    }
+    #search {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+#currentLoc {
+    position: absolute;
+    right: 0;
+    #here:hover {
+        cursor: pointer;
+    }
+}
+
+#currentWeather {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#multiView {
+    text-align: center;
+}
+
+#dailyWeather, #hourlyWeather {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.weekDays, .hours {
+    width: 600px;
+    margin: 0 auto;
+}
