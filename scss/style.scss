@@ -120,7 +120,8 @@ a {
 }
 
 p {
-    margin-top: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 p+p {
@@ -137,18 +138,22 @@ p+p {
     position: relative;
     #logo {
         position: absolute;
-        left: 0;
+        left: 10px;
+        top: 10px;
     }
     #search {
         position: absolute;
         left: 50%;
+        top: 10px;
         transform: translateX(-50%);
     }
 }
 
 #currentLoc {
     position: absolute;
-    right: 0;
+    right: 10px;
+    top: 10px;
+    line-height: 1em;
     #here:hover {
         cursor: pointer;
     }
@@ -170,5 +175,30 @@ p+p {
 
 .weekDays, .hours {
     width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
+}
+
+.sectionTitle {
+    display: inline
+}
+
+.sectionButton {
+    background-color: transparent;
+    border: none;
+}
+
+.sectionButton:focus {
+    outline: none;
+}
+
+.wi {
+    font-size: 60px;
+}
+
+.details {
+    flex: 3;
+}
+
+.icon {
+    flex: 1;
 }

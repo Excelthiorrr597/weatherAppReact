@@ -187,28 +187,50 @@ var ExtraView = React.createClass({
         }
 
         var styleObj = {display:'none'},
-            plusMinus = '+'
+            plusMinus = '+',
+            borderObj = {backgroundColor:'transparent'},
+            weather = 'wi wi-alien'
 
         if (this.props.focusId===day.time) {
             styleObj = {
-                display:'block'
+                display:'flex'
             }
             plusMinus = '-'
+            borderObj = {backgroundColor:'lightsteelblue'}
         }
 
+        if (summary.indexOf('clear')!== -1 || summary.indexOf('Clear')!== -1) {
+            weather = 'wi wi-day-sunny'
+        }
 
+        if (summary.indexOf('cloudy')!== -1) {
+            weather = 'wi wi-cloudy'
+        }
+
+        if (summary.indexOf('rain')!== -1) {
+            weather = 'wi wi-rain'
+        }
+
+        if (summary.indexOf('thunder')!== -1) {
+            weather = 'wi wi-thunderstorm'
+        }
 
         return (
-            <div key={day.time} className="weekDays">
+            <div key={day.time} className="weekDays" style={borderObj}>
                 <div>
-                    <p>{weekDay}</p>
-                    <input type='button' value={plusMinus} onClick={doClick.bind(this)} />
+                    <p className="sectionTitle">{weekDay}</p>
+                    <input className="sectionButton" type='button' value={plusMinus} onClick={doClick.bind(this)} />
                 </div>
                 <div style={styleObj}>
-                    <p>{summary}</p>
-                    <p>Temp: {day.apparentTemperatureMax}°F/{day.apparentTemperatureMin}°F</p>
-                    <p>Humidity: {humidity}%</p>
-                    <p>Rain Chance: {rain}%</p>
+                    <div className="details">
+                        <p>{summary}</p>
+                        <p>Temp: {day.apparentTemperatureMax}°F/{day.apparentTemperatureMin}°F</p>
+                        <p>Humidity: {humidity}%</p>
+                        <p>Rain Chance: {rain}%</p>
+                    </div>
+                    <div className='icon'>
+                        <i className={weather}></i>
+                    </div>
                 </div>
             </div>
             )
@@ -237,26 +259,50 @@ var ExtraView = React.createClass({
         }
 
         var styleObj = {display:'none'},
-            plusMinus = '+'
+            plusMinus = '+',
+            borderObj = {backgroundColor:'transparent'},
+            weather = 'wi wi-alien'
 
         if (this.props.focusId===hour.time) {
             styleObj = {
-                display:'block'
+                display:'flex'
             }
             plusMinus = '-'
+            borderObj = {backgroundColor:'lightsteelblue'}
+        }
+
+        if (summary.indexOf('clear')!== -1 || summary.indexOf('Clear')!== -1) {
+            weather = 'wi wi-day-sunny'
+        }
+
+        if (summary.indexOf('cloudy')!== -1) {
+            weather = 'wi wi-cloudy'
+        }
+
+        if (summary.indexOf('rain')!== -1) {
+            weather = 'wi wi-rain'
+        }
+
+        if (summary.indexOf('thunder')!== -1) {
+            weather = 'wi wi-thunderstorm'
         }
 
         return (
-            <div key={hour.time} className="hours">
+            <div key={hour.time} className="hours" style={borderObj}>
                 <div >
-                    <p>{time}</p>
-                    <input type='button' value={plusMinus} onClick={doClick.bind(this)} />
+                    <p className="sectionTitle">{time}</p>
+                    <input className="sectionButton" type='button' value={plusMinus} onClick={doClick.bind(this)} />
                 </div>
                 <div style={styleObj}>
-                    <p>{summary}</p>
-                    <p>Temp: {temp}</p>
-                    <p>Humidity: {humidity}%</p>
-                    <p>Rain Chance: {rain}%</p>
+                    <div className="details">
+                        <p>{summary}</p>
+                        <p>Temp: {temp}</p>
+                        <p>Humidity: {humidity}%</p>
+                        <p>Rain Chance: {rain}%</p>
+                    </div>
+                    <div className="icon">
+                        <i className={weather} />
+                    </div>
                 </div>
             </div>
             )
@@ -289,8 +335,6 @@ var ExtraView = React.createClass({
                 </div>
                 )
         }
-
-        return null
     }
 })
 
