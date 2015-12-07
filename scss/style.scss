@@ -199,6 +199,9 @@ p+p {
     flex: 3;
 }
 
-.icon {
+.iconContainer {
     flex: 1;
+    .icon {
+        font-size: 70px;
+    }
 }

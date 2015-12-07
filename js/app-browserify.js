@@ -157,7 +157,7 @@ var CurrentView = React.createClass({
 
         return (
             <div id='currentWeather'>
-                <p>Weather Right Now</p>
+                <h2>Weather Right Now</h2>
                 <p>{summary}</p>
                 <p>Temp: {currentTemp}°F</p>
                 <p>Humidity: {humidity}%</p>
@@ -189,7 +189,7 @@ var ExtraView = React.createClass({
         var styleObj = {display:'none'},
             plusMinus = '+',
             borderObj = {backgroundColor:'transparent'},
-            weather = 'wi wi-alien'
+            weather = 'fa fa-beer icon'
 
         if (this.props.focusId===day.time) {
             styleObj = {
@@ -200,19 +200,19 @@ var ExtraView = React.createClass({
         }
 
         if (summary.indexOf('clear')!== -1 || summary.indexOf('Clear')!== -1) {
-            weather = 'wi wi-day-sunny'
+            weather = 'fa fa-sun-o icon'
         }
 
-        if (summary.indexOf('cloudy')!== -1) {
-            weather = 'wi wi-cloudy'
+        if (summary.indexOf('cloudy')!== -1 || summary.indexOf('Cloudy')!== -1) {
+            weather = 'fa fa-cloud icon'
         }
 
-        if (summary.indexOf('rain')!== -1) {
-            weather = 'wi wi-rain'
+        if (summary.indexOf('rain')!== -1 || summary.indexOf('Rain')!== -1) {
+            weather = 'fa fa-tint icon'
         }
 
-        if (summary.indexOf('thunder')!== -1) {
-            weather = 'wi wi-thunderstorm'
+        if (summary.indexOf('thunder')!== -1 || summary.indexOf('Thunder')!== -1) {
+            weather = 'fa fa-bolt icon'
         }
 
         return (
@@ -228,7 +228,7 @@ var ExtraView = React.createClass({
                         <p>Humidity: {humidity}%</p>
                         <p>Rain Chance: {rain}%</p>
                     </div>
-                    <div className='icon'>
+                    <div className='iconContainer'>
                         <i className={weather}></i>
                     </div>
                 </div>
