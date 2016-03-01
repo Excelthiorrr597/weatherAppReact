@@ -75,13 +75,15 @@ var WeatherView = React.createClass({
         return (
             <div>
                 <SearchContainer />
-                <CurrentView data={this.props.data.currently} />
-                <div id="multiView">
-                    <input type='submit' value='Weekly Weather' onClick={this._doWeekly} />
-                    <input type='submit' value='Hourly Weather' onClick={this._doHourly} />
-                </div>
-                <div id='extraView'>
-                    <ExtraView walkieTalkie={this._walkieTalkie} extra={this.state.extra} data={this.props.data} focusId={this.state.focusId}/>
+                <div id="weatherContainer">
+                    <CurrentView data={this.props.data.currently} />
+                    <div id="multiView">
+                        <input type='submit' value='Weekly Weather' onClick={this._doWeekly} />
+                        <input type='submit' value='Hourly Weather' onClick={this._doHourly} />
+                    </div>
+                    <div id='extraView'>
+                        <ExtraView walkieTalkie={this._walkieTalkie} extra={this.state.extra} data={this.props.data} focusId={this.state.focusId}/>
+                    </div>
                 </div>
             </div>
             )
@@ -105,20 +107,25 @@ var SearchContainer = React.createClass({
             var inputEl = event.target,
                 query = inputEl.value
 
+            if (query === '') {
+            alert('Enter Search Term')
+            return
+            }
+
             location.hash = `search/${query}`
             event.target.value = ''
         }
     },
 
     _handleInput: function() {
-        var loc = this.refs.loc.value
+        var query = this.refs.loc.value
 
-        if (loc === '') {
+        if (query === '') {
             alert('Enter Search Term')
             return
         }
 
-        location.hash = `search/${loc}`
+        location.hash = `search/${query}`
 
     },
 
@@ -188,15 +195,13 @@ var ExtraView = React.createClass({
 
         var styleObj = {display:'none'},
             plusMinus = '+',
-            borderObj = {backgroundColor:'transparent'},
+            borderObj = {background:'transparent'},
             weather = 'fa fa-beer icon'
 
         if (this.props.focusId===day.time) {
-            styleObj = {
-                display:'flex'
-            }
+            styleObj = {display:'flex'}
             plusMinus = '-'
-            borderObj = {backgroundColor:'lightsteelblue'}
+            borderObj = {background:'lightsteelblue',transition:'background 1s'}
         }
 
         if (summary.indexOf('clear')!== -1 || summary.indexOf('Clear')!== -1) {
@@ -260,7 +265,7 @@ var ExtraView = React.createClass({
 
         var styleObj = {display:'none'},
             plusMinus = '+',
-            borderObj = {backgroundColor:'transparent'},
+            borderObj = {background:'transparent'},
             weather = 'wi wi-alien'
 
         if (this.props.focusId===hour.time) {
@@ -268,23 +273,23 @@ var ExtraView = React.createClass({
                 display:'flex'
             }
             plusMinus = '-'
-            borderObj = {backgroundColor:'lightsteelblue'}
+            borderObj = {background:'lightsteelblue',transition:'background 1s'}
         }
 
         if (summary.indexOf('clear')!== -1 || summary.indexOf('Clear')!== -1) {
-            weather = 'wi wi-day-sunny'
+            weather = 'fa fa-sun-o icon'
         }
 
-        if (summary.indexOf('cloudy')!== -1) {
-            weather = 'wi wi-cloudy'
+        if (summary.indexOf('cloudy')!== -1 || summary.indexOf('Cloudy')!== -1) {
+            weather = 'fa fa-cloud icon'
         }
 
-        if (summary.indexOf('rain')!== -1) {
-            weather = 'wi wi-rain'
+        if (summary.indexOf('rain')!== -1 || summary.indexOf('Rain')!== -1) {
+            weather = 'fa fa-tint icon'
         }
 
-        if (summary.indexOf('thunder')!== -1) {
-            weather = 'wi wi-thunderstorm'
+        if (summary.indexOf('thunder')!== -1 || summary.indexOf('Thunder')!== -1) {
+            weather = 'fa fa-bolt icon'
         }
 
         return (
@@ -300,7 +305,7 @@ var ExtraView = React.createClass({
                         <p>Humidity: {humidity}%</p>
                         <p>Rain Chance: {rain}%</p>
                     </div>
-                    <div className="icon">
+                    <div className="iconContainer">
                         <i className={weather} />
                     </div>
                 </div>

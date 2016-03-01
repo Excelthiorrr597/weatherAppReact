@@ -138,7 +138,7 @@ p+p {
     position: relative;
     #logo {
         position: absolute;
-        left: 10px;
+        left: 50px;
         top: 10px;
     }
     #search {
@@ -151,7 +151,7 @@ p+p {
 
 #currentLoc {
     position: absolute;
-    right: 10px;
+    right: 50px;
     top: 10px;
     line-height: 1em;
     #here:hover {
@@ -160,8 +160,11 @@ p+p {
 }
 
 #currentWeather {
-    width: 800px;
+    width: 700px;
     margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-width: 100%;
 }
 
 #multiView {
@@ -169,13 +172,16 @@ p+p {
 }
 
 #dailyWeather, #hourlyWeather {
-    width: 800px;
+    width: 700px;
     margin: 0 auto;
+    margin-top: 50px;
+    max-width: 100%;
 }
 
 .weekDays, .hours {
-    width: 600px;
+    width: 550px;
     margin: 20px auto;
+    max-width: 100%;
 }
 
 .sectionTitle {
@@ -204,4 +210,13 @@ p+p {
     .icon {
         font-size: 70px;
     }
+}
+
+#weatherContainer {
+    padding: 50px;
+    width: 700px;
+    border-right: 2px dashed grey;
+    border-left: 2px dashed grey;
+    margin: 0 auto;
+    max-width: 100%;
 }
