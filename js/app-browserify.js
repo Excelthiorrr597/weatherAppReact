@@ -226,7 +226,7 @@ var ExtraView = React.createClass({
                     <p className="sectionTitle">{weekDay}</p>
                     <input className="sectionButton" type='button' value={plusMinus} onClick={doClick.bind(this)} />
                 </div>
-                <div style={styleObj}>
+                <div className="detailContainer" style={styleObj}>
                     <div className="details">
                         <p>{summary}</p>
                         <p>Temp: {day.apparentTemperatureMax}°F/{day.apparentTemperatureMin}°F</p>
